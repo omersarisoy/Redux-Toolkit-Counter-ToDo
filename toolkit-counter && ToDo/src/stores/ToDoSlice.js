@@ -14,11 +14,16 @@ export const ToDoSlice = createSlice({
             state.listBox = [...state.listBox, action.payload];
         },
         deleteItem: (state, action) => {
-            state.listBox.splice(action.payload, 1)
+            // state.listBox.splice(action.payload, 1)
+            state.listBox = state.listBox.filter(item=>item!==action.payload)
         } 
     }
 
 })
 
 export const {getValue, addItem, deleteItem} = ToDoSlice.actions
+
+export const selectListItem = state => state.todo.listItem
+export const selectListBox = state => state.todo.listBox
+
 export default ToDoSlice.reducer
